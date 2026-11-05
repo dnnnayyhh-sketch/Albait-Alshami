@@ -46,7 +46,6 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.06);
     }
 
-    /* Top Bar */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -73,7 +72,6 @@
       font-size: 14px;
       font-weight: 800;
       color: var(--text-main);
-      cursor: pointer;
     }
 
     .profile-avatar {
@@ -85,7 +83,6 @@
       border: 2px solid var(--primary-light);
     }
 
-    /* Hero Banner */
     .banner-wrapper {
       padding: 12px 20px;
     }
@@ -128,10 +125,8 @@
 
     .banner-icon {
       font-size: 48px;
-      opacity: 0.95;
     }
 
-    /* Section Headings */
     .section-title {
       display: flex;
       justify-content: space-between;
@@ -152,7 +147,6 @@
       font-weight: 700;
     }
 
-    /* Categories Horizontal Bar */
     .categories-scroll {
       display: flex;
       gap: 14px;
@@ -205,7 +199,6 @@
       color: var(--primary);
     }
 
-    /* Featured Cards Carousel */
     .offers-scroll {
       display: flex;
       gap: 14px;
@@ -268,7 +261,6 @@
       z-index: 1;
     }
 
-    /* Menu Food List */
     .food-list {
       display: flex;
       flex-direction: column;
@@ -340,15 +332,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .add-btn:active {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    /* Floating WhatsApp Quick Order */
     .whatsapp-float-bar {
       margin: 16px 20px 4px;
       background: #25d366;
@@ -364,7 +349,6 @@
       box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
     }
 
-    /* Bottom Navigation Bar */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -401,7 +385,6 @@
     .nav-btn svg {
       width: 22px;
       height: 22px;
-      stroke-width: 2;
     }
 
     .cart-badge {
@@ -419,17 +402,14 @@
 <body>
 
   <div class="app-container">
-    
-    <!-- Top Header -->
     <div class="top-bar">
       <div class="location-box">
         <span class="loc-label">📍 التوصيل إلى</span>
-        <span class="loc-val">البيت الشامي - طلب سريع ▾</span>
+        <span class="loc-val">البيت الشامي - طلب مباشر</span>
       </div>
-      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="profile-avatar" alt="User">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="profile-avatar" alt="Avatar">
     </div>
 
-    <!-- Promo Banner -->
     <div class="banner-wrapper">
       <div class="promo-banner">
         <div class="banner-text">
@@ -441,10 +421,9 @@
       </div>
     </div>
 
-    <!-- Categories Scrollable -->
     <div class="section-title">
       <h4>الأقسام والتصنيفات</h4>
-      <a href="#" onclick="filterCategory('all'); return false;">عرض الكل</a>
+      <a href="javascript:void(0)" onclick="filterCategory('all')">عرض الكل</a>
     </div>
 
     <div class="categories-scroll">
@@ -478,10 +457,9 @@
       </div>
     </div>
 
-    <!-- Featured Offers -->
     <div class="section-title">
-      <h4>عروض التوفير الحصرية</h4>
-      <a href="#">كافة العروض</a>
+      <h4>عروض حصرية</h4>
+      <a href="javascript:void(0)">كافة العروض</a>
     </div>
 
     <div class="offers-scroll">
@@ -493,29 +471,24 @@
       </div>
       <div class="offer-card" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&fit=crop');">
         <div class="offer-overlay"></div>
-        <span class="offer-badge">خصم 20%</span>
-        <span class="offer-title">كريب لوتس & بوظة</span>
+        <span class="offer-badge">مميز</span>
+        <span class="offer-title">كريب لوتس وبوظة</span>
         <span class="offer-sub">مع شوكولا بلجيكية غنية</span>
       </div>
     </div>
 
-    <!-- WhatsApp Direct Connection Banner -->
-    <a href="#" onclick="openWhatsApp(); return false;" class="whatsapp-float-bar">
-      <span>💬 اطلب عبر واتساب مباشرة (0988111855)</span>
+    <a href="javascript:void(0)" onclick="openWhatsApp()" class="whatsapp-float-bar">
+      <span>💬 اطلب عبر واتساب (0988111855)</span>
       <span>ارسال ➔</span>
     </a>
 
-    <!-- Menu Items List -->
     <div class="section-title">
       <h4>الأصناف المتاحة</h4>
       <span style="font-size: 11px; color: var(--text-muted);" id="items-count"></span>
     </div>
 
-    <div class="food-list" id="food-list-container">
-      <!-- Items dynamically populated from script -->
-    </div>
+    <div class="food-list" id="food-list-container"></div>
 
-    <!-- Bottom Navigation -->
     <div class="bottom-nav">
       <button class="nav-btn active">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -525,68 +498,54 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <span>العروض</span>
       </button>
-      <button class="nav-btn" style="position: relative;" onclick="checkoutCart()">
+      <button class="nav-btn" onclick="checkoutCart()">
         <div style="position: relative; display: inline-block;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="cart-badge" id="cart-counter">0</span>
         </div>
         <span>السلة</span>
       </button>
       <button class="nav-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
         <span>حسابي</span>
       </button>
     </div>
-
   </div>
 
   <script>
-    // الرقم الأول المعتمد في الصورة
     const WHATSAPP_PHONE = "963988111855";
 
-    // قائمة الأصناف الكاملة المستخرجة من منيو البيت الشامي
     const menuItems = [
-      // وجبات غربية
-      { id: 1, name: "كوردون بلو", category: "western", price: 850, desc: "صدر دجاج محشي جبن ومورتديلا يقدم مع مقبلات وبطاطا", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=150&fit=crop" },
+      { id: 1, name: "كوردون بلو", category: "western", price: 850, desc: "صدر دجاج محشي جبن ومورتديلا مع مقبلات وبطاطا", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=150&fit=crop" },
       { id: 2, name: "زنجر سوبريم", category: "western", price: 800, desc: "دجاج كريسبي مقرمش حار مع صوص ومقبلات", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150&fit=crop" },
       { id: 3, name: "إسكالوب بانيه", category: "western", price: 650, desc: "شريحة دجاج مقرمشة بتتبيلة خاصة مع صوص كوكتيل", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=150&fit=crop" },
       { id: 4, name: "وجبة البيت الشامي", category: "western", price: 800, desc: "وجبة سبيشال مشكلة غنية مع صوصات فاخرة", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=150&fit=crop" },
       { id: 5, name: "شيش بالفخار", category: "western", price: 800, desc: "قطع شيش متبلة ومطهوة بالفخار مع جبنة سائلة", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=150&fit=crop" },
-      
-      // وجبات شرقية
-      { id: 6, name: "كبة لبنية مع رز", category: "eastern", price: 700, desc: "حبات كبة شامية مقرمشة في لبن مطبوخ بالنعناع والثوم", img: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=150&fit=crop" },
+      { id: 6, name: "كبة لبنية مع رز", category: "eastern", price: 700, desc: "حبات كبة مقرمشة في لبن مطبوخ بالنعناع والثوم", img: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=150&fit=crop" },
       { id: 7, name: "كباب هندي مع رز", category: "eastern", price: 700, desc: "لحم كباب متبل مطهو مع صوص طماطم وخضار طازجة", img: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=150&fit=crop" },
       { id: 8, name: "مندي دجاج", category: "eastern", price: 700, desc: "أرز مندي مبخر ومدخن مع نصف دجاجة محمرة ومكسرات", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=150&fit=crop" },
-      { id: 9, name: "كبسة دجاج", category: "eastern", price: 700, desc: "كبسة خليجية متبلة ببهارات صحيحة مع صوص الدقوس", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=150&fit=crop" },
-
-      // مقبلات وسلطات
-      { id: 10, name: "حمص باللحمة", category: "appetizers", price: 450, desc: "حمص شامي ناعم مغطى بلحم مفروم بلدي ومكسرات مقلية", img: "https://images.unsplash.com/photo-1577906096429-f73c2c312435?w=150&fit=crop" },
+      { id: 9, name: "كبسة دجاج", category: "eastern", price: 700, desc: "كبسة متبلة ببهارات صحيحة مع صوص الدقوس", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=150&fit=crop" },
+      { id: 10, name: "حمص باللحمة", category: "appetizers", price: 450, desc: "حمص ناعم مغطى بلحم مفروم بلدي ومكسرات مقلية", img: "https://images.unsplash.com/photo-1577906096429-f73c2c312435?w=150&fit=crop" },
       { id: 11, name: "يلنجي فاخر", category: "appetizers", price: 300, desc: "ورق عنب محشي رز وخضار بزيت الزيتون ودبس الرمان", img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=150&fit=crop" },
       { id: 12, name: "سلطة البيت الشامي", category: "appetizers", price: 600, desc: "تشكيلة خضار ورقية مع صوص الرمان والمكسرات والجبن", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=150&fit=crop" },
-
-      // كريب ووافل وبوظة
       { id: 13, name: "كريب لوتس", category: "sweets", price: 450, desc: "كريب فرنسي طري محشي ومزين بزبدة وبسكويت لوتس", img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=150&fit=crop" },
       { id: 14, name: "وافل بستاشيو", category: "sweets", price: 450, desc: "وافل بلجيكي مقرمش مع صوص الفستق الحلبي الغني", img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=150&fit=crop" },
       { id: 15, name: "بوظة مشكلة شامي", category: "sweets", price: 330, desc: "تشكيلة كرات بوظة عربية وفواكه طبيعية", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=150&fit=crop" },
-
-      // عصائر وكوكتيل وميلك شيك
-      { id: 16, name: "ميلك شيك البيت الشامي", category: "drinks", price: 400, desc: "ميلك شيك خاص بالمطعم غني بالكريمة والنكهات الطبيعية", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=150&fit=crop" },
-      { id: 17, name: "عصير كوكتيل أفوكادو", category: "drinks", price: 400, desc: "أفوكادو طبيعي مع عسل ومكسرات وقشطة بلدية", img: "https://images.unsplash.com/photo-1638176066666-ffb2f5d743a7?w=150&fit=crop" },
-      { id: 18, name: "موهيتو بلو هاواي", category: "drinks", price: 300, desc: "مشروب صودا منعش مع نكهة البلو كوراكاو والليمون والنعناع", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&fit=crop" },
-
-      // مشروبات ساخنة
-      { id: 19, name: "قهوة تركي شامي", category: "hot", price: 150, desc: "قهوة ببن محمص على الأصول مع الهال", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=150&fit=crop" },
+      { id: 16, name: "ميلك شيك البيت الشامي", category: "drinks", price: 400, desc: "ميلك شيك غني بالكريمة ونكهات الكافيه الخاصة", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=150&fit=crop" },
+      { id: 17, name: "كوكتيل أفوكادو", category: "drinks", price: 400, desc: "أفوكادو طبيعي مع عسل ومكسرات وقشطة بلدية", img: "https://images.unsplash.com/photo-1638176066666-ffb2f5d743a7?w=150&fit=crop" },
+      { id: 18, name: "موهيتو بلو هاواي", category: "drinks", price: 300, desc: "مشروب صودا منعش بنكهة التوت والليمون والنعناع", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&fit=crop" },
+      { id: 19, name: "قهوة تركي شامي", category: "hot", price: 150, desc: "قهوة ببن محمص مع الهال على الأصول", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=150&fit=crop" },
       { id: 20, name: "سبانش لاتيه ساخن", category: "hot", price: 350, desc: "إسبريسو مع حليب مكثف محلى ورغوة مخملية", img: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=150&fit=crop" }
     ];
 
     let cart = [];
 
-    // عرض المنتجات في الواجهة
     function renderFoodItems(items) {
       const container = document.getElementById('food-list-container');
       const countEl = document.getElementById('items-count');
+      if (!container) return;
       container.innerHTML = '';
-      countEl.textContent = `${items.length} صنف متوفر`;
+      if (countEl) countEl.textContent = `${items.length} صنف متوفر`;
 
       items.forEach(item => {
         const card = document.createElement('div');
@@ -606,56 +565,49 @@
       });
     }
 
-    // فلترة الأصناف حسب القسم
     function filterCategory(cat, el) {
       if (el) {
         document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('active'));
         el.classList.add('active');
       }
-
       if (cat === 'all') {
         renderFoodItems(menuItems);
       } else {
-        const filtered = menuItems.filter(item => item.category === cat);
-        renderFoodItems(filtered);
+        renderFoodItems(menuItems.filter(i => i.category === cat));
       }
     }
 
-    // إضافة للسلة
     function addToCart(id) {
       const item = menuItems.find(i => i.id === id);
-      cart.push(item);
-      document.getElementById('cart-counter').textContent = cart.length;
+      if (item) {
+        cart.push(item);
+        document.getElementById('cart-counter').textContent = cart.length;
+      }
     }
 
-    // إرسال الطلب لواتساب مع الرقم المحدد في الصورة
     function openWhatsApp(customMsg) {
-      let text = customMsg || "مرحباً كافيه ومطعم البيت الشامي، أود الاستفسار والطلب من المنيو.";
-         let text = customMsg || "مرحباً كافيه ومطعم البيت الشامي، أود الاستفسار والطلب من المنيو.";
-      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+      const text = customMsg || "مرحباً كافيه ومطعم البيت الشامي، أود الاستفسار والطلب من المنيو.";
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // إتمام الطلب من السلة
     function checkoutCart() {
       if (cart.length === 0) {
-        alert("السلة فارغة! يرجى إضافة وجبات أولاً بالضغط على (+)");
+        alert("السلة فارغة! اضغط على علامة (+) لإضافة وجبات أولاً.");
         return;
       }
-
       let summary = "مرحباً كافيه ومطعم البيت الشامي، أود طلب الأصناف التالية من المنيو:\n\n";
       let total = 0;
-      cart.forEach((c, index) => {
-        summary += `${index + 1}. ${c.name} - ${c.price} ل.س\n`;
+      cart.forEach((c, idx) => {
+        summary += `${idx + 1}. ${c.name} - ${c.price} ل.س\n`;
         total += c.price;
       });
       summary += `\nالمجموع الإجمالي: ${total} ل.س\nيرجى تأكيد الاستلام والتوصيل.`;
-
       openWhatsApp(summary);
     }
 
-    // التشغيل المبدئي
-    renderFoodItems(menuItems);
+    document.addEventListener("DOMContentLoaded", () => {
+      renderFoodItems(menuItems);
+    });
   </script>
 </body>
 </html>
