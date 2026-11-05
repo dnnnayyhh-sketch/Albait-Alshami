@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>البيت الشامي - كافيه ومطعم</title>
+  <title>البيت الشامي | كافيه ومطعم</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1e824c;
-      --primary-light: #e8f5e9;
-      --accent: #d35400;
-      --bg: #f8faf9;
-      --card-bg: #ffffff;
-      --text-main: #2c3e50;
-      --text-muted: #7f8c8d;
-      --border: #edf2f0;
-      --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      --bg-dark: #0f1412;
+      --card-bg: rgba(26, 34, 30, 0.75);
+      --card-border: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+      --text-main: #f5f6f8;
+      --text-muted: #9ba3af;
+      --green-shami: #1b4d3e;
+      --whatsapp: #25d366;
+      --shadow-lux: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
     * {
@@ -29,371 +31,558 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--bg-dark);
       color: var(--text-main);
       display: flex;
       justify-content: center;
       min-height: 100vh;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 0%, #1e3329 0%, #0f1412 70%);
+      background-attachment: fixed;
     }
 
-    .app-container {
+    .app-screen {
       width: 100%;
       max-width: 480px;
-      background: var(--bg);
       min-height: 100vh;
       position: relative;
-      padding-bottom: 90px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.06);
+      padding-bottom: 95px;
+      background: rgba(15, 20, 18, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
     }
 
-    .top-bar {
+    /* Header & Shami Crest */
+    .app-header {
+      padding: 20px 20px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 20px 10px;
-      background: #fff;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(15, 20, 18, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      backdrop-filter: blur(12px);
     }
 
-    .location-box {
+    .brand-group {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    .loc-label {
+    .shami-crest {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--gold);
+      background: radial-gradient(circle, #244133 0%, #14221b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .shami-crest svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text p {
       font-size: 11px;
-      color: #e74c3c;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 3px;
+      color: var(--text-muted);
     }
 
-    .loc-val {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .profile-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #eee;
-      object-fit: cover;
-      border: 2px solid var(--primary-light);
-    }
-
-    .banner-wrapper {
-      padding: 12px 20px;
-    }
-
-    .promo-banner {
-      background: linear-gradient(135deg, #1b7a43, #2ecc71);
-      border-radius: 20px;
-      padding: 18px 20px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 8px 18px rgba(46, 204, 113, 0.25);
-    }
-
-    .banner-text h3 {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .banner-text p {
-      font-size: 12px;
-      opacity: 0.9;
-      margin-bottom: 12px;
-    }
-
-    .banner-btn {
-      background: #ff5722;
-      color: #fff;
-      border: none;
-      padding: 6px 16px;
+    .quick-call-btn {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
-    }
-
-    .banner-icon {
-      font-size: 48px;
-    }
-
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px 8px;
-    }
-
-    .section-title h4 {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .section-title a {
-      font-size: 12px;
-      color: var(--primary);
       text-decoration: none;
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
     }
 
-    .categories-scroll {
+    .quick-call-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* Views */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      margin: 16px 20px 10px;
+      border-radius: 20px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(27, 77, 62, 0.9), rgba(15, 20, 18, 0.95)), 
+                  url('https://images.unsplash.com/photo-1544025162-d76694265947?w=600&fit=crop') center/cover;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-lux);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner h2 {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .hero-banner p {
+      font-size: 12px;
+      color: #cbd5e1;
+      max-width: 250px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold-gradient);
+      color: #111;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    /* Search bar */
+    .search-container {
+      padding: 6px 20px 12px;
+    }
+
+    .search-input-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 14px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-input-box:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Categories Horizontal Bar */
+    .cat-strip {
       display: flex;
-      gap: 14px;
+      gap: 10px;
       padding: 6px 20px 14px;
       overflow-x: auto;
       scrollbar-width: none;
     }
 
-    .categories-scroll::-webkit-scrollbar {
+    .cat-strip::-webkit-scrollbar {
       display: none;
     }
 
-    .cat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
+    .cat-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
       cursor: pointer;
-      flex-shrink: 0;
+      white-space: nowrap;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .cat-icon-circle {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      box-shadow: var(--shadow);
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-    }
-
-    .cat-item.active .cat-icon-circle {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
+    .cat-chip.active {
+      background: var(--gold-gradient);
+      color: #111;
+      border-color: var(--gold);
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
       transform: translateY(-2px);
     }
 
-    .cat-name {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-main);
+    /* Reveal Animations on Scroll */
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: opacity, transform;
     }
 
-    .cat-item.active .cat-name {
-      color: var(--primary);
+    .reveal-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .offers-scroll {
-      display: flex;
-      gap: 14px;
-      padding: 4px 20px 14px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .offers-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .offer-card {
-      min-width: 210px;
-      height: 110px;
-      border-radius: 16px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 12px;
-      color: #fff;
-      box-shadow: var(--shadow);
-      flex-shrink: 0;
-    }
-
-    .offer-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%);
-    }
-
-    .offer-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #e74c3c;
-      color: #fff;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-weight: 700;
-      z-index: 1;
-    }
-
-    .offer-title {
-      position: relative;
-      font-size: 13px;
-      font-weight: 700;
-      z-index: 1;
-    }
-
-    .offer-sub {
-      position: relative;
-      font-size: 10px;
-      opacity: 0.85;
-      z-index: 1;
-    }
-
-    .food-list {
+    /* Menu Items Feed */
+    .items-container {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding: 4px 20px;
+      padding: 6px 20px 20px;
     }
 
-    .food-card {
+    .dish-card {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      gap: 14px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.25s ease;
     }
 
-    .food-info {
+    .dish-card:hover {
+      border-color: rgba(212, 175, 55, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .dish-details {
       flex: 1;
-      padding-left: 12px;
     }
 
-    .food-name {
-      font-size: 14px;
+    .dish-tag {
+      font-size: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+      display: inline-block;
+    }
+
+    .dish-title {
+      font-size: 14.5px;
       font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 3px;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
 
-    .food-desc {
-      font-size: 11.5px;
+    .dish-sub {
+      font-size: 11px;
       color: var(--text-muted);
-      margin-bottom: 6px;
       line-height: 1.4;
+      margin-bottom: 6px;
     }
 
-    .food-price {
+    .dish-price {
       font-size: 13.5px;
-      font-weight: 800;
-      color: var(--primary);
+      font-weight: 900;
+      color: var(--gold-light);
     }
 
-    .food-actions {
+    .add-action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .add-action-btn:active {
+      transform: scale(0.9);
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* Cart Modal / View */
+    .cart-view-container {
+      padding: 20px;
+    }
+
+    .delivery-options-box {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .opt-card {
+      flex: 1;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .opt-card.active {
+      background: rgba(27, 77, 62, 0.4);
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .opt-card h4 {
+      font-size: 13px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .opt-card p {
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    .cart-items-box {
       display: flex;
       flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-left: 4px;
+    }
+
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cart-row-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .cart-row-meta {
+      font-size: 11px;
+      color: var(--gold);
+    }
+
+    .qty-controls {
+      display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .food-img {
-      width: 65px;
-      height: 65px;
-      border-radius: 12px;
-      object-fit: cover;
-      background: #f1f1f1;
+    .qty-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 900;
     }
 
-    .add-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--primary-light);
-      color: var(--primary);
+    .bill-summary {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 14px;
+      padding: 14px 18px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .bill-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .bill-line.total {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--gold-light);
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 8px;
+      margin-bottom: 0;
+    }
+
+    .order-note-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 12px;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    .submit-order-btn {
+      width: 100%;
+      background: #25d366;
       border: none;
-      font-size: 16px;
+      border-radius: 14px;
+      padding: 14px;
+      color: #fff;
+      font-size: 14px;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s;
     }
 
-    .whatsapp-float-bar {
-      margin: 16px 20px 4px;
-      background: #25d366;
+    .submit-order-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
+    }
+
+    /* Profile View */
+    .profile-view {
+      padding: 24px 20px;
+    }
+
+    .profile-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-icon-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      background: radial-gradient(circle, #244133 0%, #101c15 100%);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    .info-list-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-box-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
-      padding: 12px 16px;
-      color: #fff;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 13px;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
     }
 
-    .bottom-nav {
+    .info-box-item .lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .info-box-item .val {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Bottom Navigation */
+    .bottom-dock {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
       max-width: 480px;
-      background: #ffffff;
-      border-top: 1px solid var(--border);
+      background: rgba(15, 20, 18, 0.88);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(212, 175, 55, 0.18);
       display: flex;
       justify-content: space-around;
-      padding: 8px 0;
+      padding: 10px 0;
       z-index: 100;
     }
 
-    .nav-btn {
+    .dock-btn {
+      background: none;
+      border: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 3px;
       color: var(--text-muted);
-      text-decoration: none;
+      cursor: pointer;
       font-size: 11px;
       font-weight: 700;
-      background: none;
-      border: none;
-      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
     }
 
-    .nav-btn.active {
-      color: var(--primary);
+    .dock-btn.active {
+      color: var(--gold);
     }
 
-    .nav-btn svg {
-      width: 22px;
-      height: 22px;
+    .dock-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
     }
 
-    .cart-badge {
+    .cart-bubble {
       position: absolute;
-      top: -2px;
-      right: -6px;
+      top: -3px;
+      right: 4px;
       background: #e74c3c;
       color: #fff;
       font-size: 9px;
+      font-weight: 900;
       padding: 1px 5px;
       border-radius: 10px;
     }
@@ -401,212 +590,571 @@
 </head>
 <body>
 
-  <div class="app-container">
-    <div class="top-bar">
-      <div class="location-box">
-        <span class="loc-label">📍 التوصيل إلى</span>
-        <span class="loc-val">البيت الشامي - طلب مباشر</span>
-      </div>
-      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="profile-avatar" alt="Avatar">
-    </div>
+  <div class="app-screen">
 
-    <div class="banner-wrapper">
-      <div class="promo-banner">
-        <div class="banner-text">
-          <h3>توصيل فوري ومباشر!</h3>
-          <p>أشهى الوجبات والمشروبات من البيت الشامي</p>
-          <button class="banner-btn" onclick="openWhatsApp('طلب عام من المنيو')">اطلب الآن</button>
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-group">
+        <div class="shami-crest">
+          <!-- الشعار الأندلسي الهندسي الشامي الفاخر -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L15.09 5.09L19.5 5.5L18.91 9.91L22 13L18.91 16.09L19.5 20.5L15.09 20.91L12 24L8.91 20.91L4.5 20.5L5.09 16.09L2 13L5.09 9.91L4.5 5.5L8.91 5.09L12 2Z"/>
+          </svg>
         </div>
-        <div class="banner-icon">🛵</div>
+        <div class="brand-text">
+          <h1>البيت الشامي</h1>
+          <p>كافيه & مطعم أصيل</p>
+        </div>
       </div>
-    </div>
+      <a href="tel:0988111855" class="quick-call-btn">
+        <span>اتصال</span>
+        <span>📞</span>
+      </a>
+    </header>
 
-    <div class="section-title">
-      <h4>الأقسام والتصنيفات</h4>
-      <a href="javascript:void(0)" onclick="filterCategory('all')">عرض الكل</a>
-    </div>
+    <!-- Tab 1: Home & Full Menu View -->
+    <main id="tab-home" class="tab-content active">
+      
+      <div class="hero-banner">
+        <span class="hero-badge">أصالة الضيافة الدمشقية</span>
+        <h2>قائمة مأكولات ومشروبات فاخرة</h2>
+        <p>اطلب وجبتك المفضلة لتصلك ساخنة، أو استلمها فوراً من الفرع.</p>
+      </div>
 
-    <div class="categories-scroll">
-      <div class="cat-item active" onclick="filterCategory('all', this)">
-        <div class="cat-icon-circle">🍽️</div>
-        <span class="cat-name">الكل</span>
+      <div class="search-container">
+        <input type="text" id="menu-search-input" class="search-input-box" placeholder="ابحث عن وجبة، عصير، حلا..." oninput="handleSearch()">
       </div>
-      <div class="cat-item" onclick="filterCategory('western', this)">
-        <div class="cat-icon-circle">🍗</div>
-        <span class="cat-name">وجبات غربية</span>
-      </div>
-      <div class="cat-item" onclick="filterCategory('eastern', this)">
-        <div class="cat-icon-circle">🥘</div>
-        <span class="cat-name">وجبات شرقية</span>
-      </div>
-      <div class="cat-item" onclick="filterCategory('appetizers', this)">
-        <div class="cat-icon-circle">🥗</div>
-        <span class="cat-name">مقبلات</span>
-      </div>
-      <div class="cat-item" onclick="filterCategory('sweets', this)">
-        <div class="cat-icon-circle">🥞</div>
-        <span class="cat-name">كريب ووافل</span>
-      </div>
-      <div class="cat-item" onclick="filterCategory('drinks', this)">
-        <div class="cat-icon-circle">🍹</div>
-        <span class="cat-name">عصائر وكوكتيل</span>
-      </div>
-      <div class="cat-item" onclick="filterCategory('hot', this)">
-        <div class="cat-icon-circle">☕</div>
-        <span class="cat-name">مشروبات ساخنة</span>
-      </div>
-    </div>
 
-    <div class="section-title">
-      <h4>عروض حصرية</h4>
-      <a href="javascript:void(0)">كافة العروض</a>
-    </div>
+      <!-- Categories Navigation -->
+      <nav class="cat-strip" id="cat-chips-bar">
+        <button class="cat-chip active" onclick="switchCategory('all', this)">الكل</button>
+        <button class="cat-chip" onclick="switchCategory('وجبات شرقية', this)">وجبات شرقية</button>
+        <button class="cat-chip" onclick="switchCategory('وجبات غربية', this)">وجبات غربية</button>
+        <button class="cat-chip" onclick="switchCategory('سندويشات', this)">السندويشات</button>
+        <button class="cat-chip" onclick="switchCategory('فطور', this)">الفطور</button>
+        <button class="cat-chip" onclick="switchCategory('شوربات', this)">شوربات</button>
+        <button class="cat-chip" onclick="switchCategory('مقبلات ساخنة', this)">مقبلات ساخنة</button>
+        <button class="cat-chip" onclick="switchCategory('مقبلات باردة', this)">مقبلات باردة</button>
+        <button class="cat-chip" onclick="switchCategory('سلطات', this)">سلطات</button>
+        <button class="cat-chip" onclick="switchCategory('كريب ووافل', this)">كريب ووافل وبان كيك</button>
+        <button class="cat-chip" onclick="switchCategory('بوظة وسلطات فواكه', this)">بوظة وسلطات فواكه</button>
+        <button class="cat-chip" onclick="switchCategory('عصائر وكوكتيل', this)">عصائر وكوكتيلات</button>
+        <button class="cat-chip" onclick="switchCategory('ميلك شيك وسموزي', this)">ميلك شيك وسموزي</button>
+        <button class="cat-chip" onclick="switchCategory('آيس كوفي ومثلجات', this)">آيس كوفي ومثلجات</button>
+        <button class="cat-chip" onclick="switchCategory('طاقة وصودا', this)">طاقة وصودا</button>
+        <button class="cat-chip" onclick="switchCategory('مشروبات ساخنة', this)">مشروبات ساخنة</button>
+        <button class="cat-chip" onclick="switchCategory('إسبرسو ولاتيه', this)">إسبرسو ولاتيه</button>
+        <button class="cat-chip" onclick="switchCategory('أراكيل', this)">الأراكيل</button>
+      </nav>
 
-    <div class="offers-scroll">
-      <div class="offer-card" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=500&fit=crop');">
-        <div class="offer-overlay"></div>
-        <span class="offer-badge">الأكثر طلباً</span>
-        <span class="offer-title">وجبة البيت الشامي</span>
-        <span class="offer-sub">مشاوي مشكلة فاخرة مع المقبلات</span>
+      <!-- Dishes Container -->
+      <section class="items-container" id="menu-items-feed"></section>
+    </main>
+
+    <!-- Tab 2: Offers View -->
+    <section id="tab-offers" class="tab-content">
+      <div style="padding: 20px;">
+        <h3 style="font-size: 16px; color: var(--gold); margin-bottom: 14px;">العروض والتخفيضات المميزة</h3>
+        
+        <div class="dish-card" style="margin-bottom: 14px;">
+          <div class="dish-details">
+            <span class="dish-tag">عرض الغداء العائلي</span>
+            <div class="dish-title">وجبة البيت الشامي + مقبلات مشكلة</div>
+            <div class="dish-sub">مشاوي مشكلة فاخرة، حمص، متبل، وبطاطا مقلية مع مشروب غازي عائلي</div>
+            <div class="dish-price">1,100 ل.س <span style="text-decoration: line-through; color: var(--text-muted); font-size: 11px;">1,350</span></div>
+          </div>
+          <button class="add-action-btn" onclick="addToOrder('عرض البيت الشامي العائلي', 1100, 'عروض')">+</button>
+        </div>
+
+        <div class="dish-card">
+          <div class="dish-details">
+            <span class="dish-tag">عرض السهرة الحلوة</span>
+            <div class="dish-title">كريب فستق حلبي + 2 قهوة تركي</div>
+            <div class="dish-sub">كريب بستاشيو فاخر ممتلئ بالشوكولا مع فنجانين قهوة شامي على الأصول</div>
+            <div class="dish-price">650 ل.س <span style="text-decoration: line-through; color: var(--text-muted); font-size: 11px;">750</span></div>
+          </div>
+          <button class="add-action-btn" onclick="addToOrder('عرض السهرة (كريب + قهوة)', 650, 'عروض')">+</button>
+        </div>
       </div>
-      <div class="offer-card" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&fit=crop');">
-        <div class="offer-overlay"></div>
-        <span class="offer-badge">مميز</span>
-        <span class="offer-title">كريب لوتس وبوظة</span>
-        <span class="offer-sub">مع شوكولا بلجيكية غنية</span>
+    </section>
+
+    <!-- Tab 3: Cart / Order Review View -->
+    <section id="tab-cart" class="tab-content">
+      <div class="cart-view-container">
+        <h3 style="font-size: 16px; color: var(--gold); margin-bottom: 14px;">مراجعة الطلب والسلة</h3>
+
+        <div class="delivery-options-box">
+          <div class="opt-card active" id="opt-delivery" onclick="setDeliveryType('توصيل سريع إلى العنوان')">
+            <h4>🛵 توصيل طلب</h4>
+            <p>توصيل لباب المنزل أو المكتب</p>
+          </div>
+          <div class="opt-card" id="opt-takeaway" onclick="setDeliveryType('استلام مباشر من الكافيه / تيك أواي')">
+            <h4>🏪 استلام من الفرع</h4>
+            <p>جاهز فور وصولك بدون انتظار</p>
+          </div>
+        </div>
+
+        <div class="cart-items-box" id="cart-rows-feed">
+          <!-- Dynamic Cart Items -->
+        </div>
+
+        <div class="bill-summary">
+          <div class="bill-line">
+            <span>مجموع الوجبات</span>
+            <span id="bill-subtotal">0 ل.س</span>
+          </div>
+          <div class="bill-line">
+            <span>نوع الاستلام</span>
+            <span id="bill-mode-txt" style="color: var(--gold);">توصيل</span>
+          </div>
+          <div class="bill-line total">
+            <span>المجموع النهائي</span>
+            <span id="bill-grand-total">0 ل.س</span>
+          </div>
+        </div>
+
+        <input type="text" id="customer-address" class="order-note-input" placeholder="اسمك وعنوان التوصيل بدقة (أو اسم الطاولة)">
+        <input type="text" id="order-special-notes" class="order-note-input" placeholder="ملاحظات إضافية (بدون ثوم، حار، سكر خفيف...)">
+
+        <button class="submit-order-btn" onclick="sendOrderViaWhatsApp()">
+          <span>تأكيد وإرسال الطلب عبر واتساب</span>
+                    <svg style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+        </button>
       </div>
-    </div>
+    </section>
 
-    <a href="javascript:void(0)" onclick="openWhatsApp()" class="whatsapp-float-bar">
-      <span>💬 اطلب عبر واتساب (0988111855)</span>
-      <span>ارسال ➔</span>
-    </a>
+    <!-- Tab 4: Account / Profile View -->
+    <section id="tab-account" class="tab-content">
+      <div class="profile-view">
+        <div class="profile-card">
+          <div class="profile-icon-box">🏛️</div>
+          <h3 style="font-size: 16px; color: #fff; margin-bottom: 4px;">كافيه ومطعم البيت الشامي</h3>
+          <p style="font-size: 11.5px; color: var(--gold);">خدمة وضيافة شامية أصيلة</p>
+        </div>
 
-    <div class="section-title">
-      <h4>الأصناف المتاحة</h4>
-      <span style="font-size: 11px; color: var(--text-muted);" id="items-count"></span>
-    </div>
+        <div class="info-list-group">
+          <div class="info-box-item">
+            <span class="lbl">رقم الهاتف والواتساب</span>
+            <span class="val" dir="ltr">+963 988 111 855</span>
+          </div>
+          <div class="info-box-item">
+            <span class="lbl">رقم الهاتف البديل</span>
+            <span class="val" dir="ltr">+963 988 111 854</span>
+          </div>
+          <div class="info-box-item">
+            <span class="lbl">ساعات العمل</span>
+            <span class="val">يومياً من 9:00 ص حتى 1:30 ليلاً</span>
+          </div>
+          <div class="info-box-item">
+            <span class="lbl">أقسام المطعم</span>
+            <span class="val">صالات عائلية، تيراس خارجي، أراكيل، توصيل</span>
+          </div>
+          <div class="info-box-item">
+            <span class="lbl">سرعة التجهيز</span>
+            <span class="val">20 - 35 دقيقة للطلب</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="food-list" id="food-list-container"></div>
-
-    <div class="bottom-nav">
-      <button class="nav-btn active">
+    <!-- Bottom Navigation Dock -->
+    <footer class="bottom-dock">
+      <button class="dock-btn active" onclick="navigate('tab-home', this)">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        <span>الرئيسية</span>
+        <span>المنيو</span>
       </button>
-      <button class="nav-btn">
+      <button class="dock-btn" onclick="navigate('tab-offers', this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <span>العروض</span>
       </button>
-      <button class="nav-btn" onclick="checkoutCart()">
-        <div style="position: relative; display: inline-block;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-badge" id="cart-counter">0</span>
-        </div>
-        <span>السلة</span>
+      <button class="dock-btn" onclick="navigate('tab-cart', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-bubble" id="dock-cart-counter">0</span>
+        <span>الطلب والسلة</span>
       </button>
-      <button class="nav-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
-        <span>حسابي</span>
+      <button class="dock-btn" onclick="navigate('tab-account', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+        <span>معلوماتنا</span>
       </button>
-    </div>
+    </footer>
+
   </div>
 
   <script>
-    const WHATSAPP_PHONE = "963988111855";
+    const PRIMARY_WHATSAPP = "963988111855";
 
-    const menuItems = [
-      { id: 1, name: "كوردون بلو", category: "western", price: 850, desc: "صدر دجاج محشي جبن ومورتديلا مع مقبلات وبطاطا", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=150&fit=crop" },
-      { id: 2, name: "زنجر سوبريم", category: "western", price: 800, desc: "دجاج كريسبي مقرمش حار مع صوص ومقبلات", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150&fit=crop" },
-      { id: 3, name: "إسكالوب بانيه", category: "western", price: 650, desc: "شريحة دجاج مقرمشة بتتبيلة خاصة مع صوص كوكتيل", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=150&fit=crop" },
-      { id: 4, name: "وجبة البيت الشامي", category: "western", price: 800, desc: "وجبة سبيشال مشكلة غنية مع صوصات فاخرة", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=150&fit=crop" },
-      { id: 5, name: "شيش بالفخار", category: "western", price: 800, desc: "قطع شيش متبلة ومطهوة بالفخار مع جبنة سائلة", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=150&fit=crop" },
-      { id: 6, name: "كبة لبنية مع رز", category: "eastern", price: 700, desc: "حبات كبة مقرمشة في لبن مطبوخ بالنعناع والثوم", img: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=150&fit=crop" },
-      { id: 7, name: "كباب هندي مع رز", category: "eastern", price: 700, desc: "لحم كباب متبل مطهو مع صوص طماطم وخضار طازجة", img: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=150&fit=crop" },
-      { id: 8, name: "مندي دجاج", category: "eastern", price: 700, desc: "أرز مندي مبخر ومدخن مع نصف دجاجة محمرة ومكسرات", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=150&fit=crop" },
-      { id: 9, name: "كبسة دجاج", category: "eastern", price: 700, desc: "كبسة متبلة ببهارات صحيحة مع صوص الدقوس", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=150&fit=crop" },
-      { id: 10, name: "حمص باللحمة", category: "appetizers", price: 450, desc: "حمص ناعم مغطى بلحم مفروم بلدي ومكسرات مقلية", img: "https://images.unsplash.com/photo-1577906096429-f73c2c312435?w=150&fit=crop" },
-      { id: 11, name: "يلنجي فاخر", category: "appetizers", price: 300, desc: "ورق عنب محشي رز وخضار بزيت الزيتون ودبس الرمان", img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=150&fit=crop" },
-      { id: 12, name: "سلطة البيت الشامي", category: "appetizers", price: 600, desc: "تشكيلة خضار ورقية مع صوص الرمان والمكسرات والجبن", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=150&fit=crop" },
-      { id: 13, name: "كريب لوتس", category: "sweets", price: 450, desc: "كريب فرنسي طري محشي ومزين بزبدة وبسكويت لوتس", img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=150&fit=crop" },
-      { id: 14, name: "وافل بستاشيو", category: "sweets", price: 450, desc: "وافل بلجيكي مقرمش مع صوص الفستق الحلبي الغني", img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=150&fit=crop" },
-      { id: 15, name: "بوظة مشكلة شامي", category: "sweets", price: 330, desc: "تشكيلة كرات بوظة عربية وفواكه طبيعية", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=150&fit=crop" },
-      { id: 16, name: "ميلك شيك البيت الشامي", category: "drinks", price: 400, desc: "ميلك شيك غني بالكريمة ونكهات الكافيه الخاصة", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=150&fit=crop" },
-      { id: 17, name: "كوكتيل أفوكادو", category: "drinks", price: 400, desc: "أفوكادو طبيعي مع عسل ومكسرات وقشطة بلدية", img: "https://images.unsplash.com/photo-1638176066666-ffb2f5d743a7?w=150&fit=crop" },
-      { id: 18, name: "موهيتو بلو هاواي", category: "drinks", price: 300, desc: "مشروب صودا منعش بنكهة التوت والليمون والنعناع", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&fit=crop" },
-      { id: 19, name: "قهوة تركي شامي", category: "hot", price: 150, desc: "قهوة ببن محمص مع الهال على الأصول", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=150&fit=crop" },
-      { id: 20, name: "سبانش لاتيه ساخن", category: "hot", price: 350, desc: "إسبريسو مع حليب مكثف محلى ورغوة مخملية", img: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=150&fit=crop" }
+    const completeMenuDB = [
+      { name: "كبة لبنية مع رز", cat: "وجبات شرقية", price: 700, sub: "حبات كبة مقلية في لبن مطبوخ بالنعناع والثوم مع رز بشعيرية" },
+      { name: "كباب هندي مع رز", cat: "وجبات شرقية", price: 700, sub: "لحم كباب متبل مطهو بصلصة الطماطم والبصل والفليفلة مع رز" },
+      { name: "كبسة دجاج", cat: "وجبات شرقية", price: 700, sub: "أرز كبسة مبهر على الأصول مع نصف دجاجة محمرة وصلصة الدقوس" },
+      { name: "مندي دجاج", cat: "وجبات شرقية", price: 700, sub: "أرز مندي مدخن ومبخر مع نصف دجاجة ومكسرات مقرمشة" },
+      { name: "دجاج مكسيكي مع رز", cat: "وجبات غربية", price: 750, sub: "قطع دجاج مع صوص مكسيكي وخضار مشكلة وأرز مبهر" },
+      { name: "كوردون بلو", cat: "وجبات غربية", price: 850, sub: "صدر دجاج محشي جبنة ومورتديلا يقدم مع بطاطا وسلطة" },
+      { name: "إسكالوب بانيه", cat: "وجبات غربية", price: 650, sub: "شريحة دجاج مقرمشة مقلية بالبقسماط مع صوص وبطاطا" },
+      { name: "إسكالوب بشاميل", cat: "وجبات غربية", price: 700, sub: "شريحة إسكالوب مغطاة بصوص البشاميل الغني والجبن الذائب" },
+      { name: "كريسبي دجاج", cat: "وجبات غربية", price: 650, sub: "أصابع دجاج كريسبي مقرمشة مع البطاطا المقلية وصلصة الثوم" },
+      { name: "زنجر دجاج", cat: "وجبات غربية", price: 800, sub: "قطع دجاج حارة ومقرمشة مع البطاطا وصلصة الكوكتيل" },
+      { name: "شرحات دجاج كريم فطر", cat: "وجبات غربية", price: 650, sub: "شرحات دجاج طرية بصوص الكريمة الغنية والمشروم الطازج" },
+      { name: "شرحات بروفنسال", cat: "وجبات غربية", price: 650, sub: "شرحات دجاج مطهوة بخلطة الثوم والكزبرة والليمون" },
+      { name: "سوبريم دجاج", cat: "وجبات غربية", price: 650, sub: "صدر دجاج مشوي بصلصة السوبريم الكريمية المميزة" },
+      { name: "وجبة أطفال", cat: "وجبات غربية", price: 500, sub: "وجبة مخصصة للأطفال من قطع الناغتس أو البرغر مع البطاطا" },
+      { name: "وجبة البيت الشامي", cat: "وجبات غربية", price: 800, sub: "الوجبة الخاصة بالمطعم تشكيلة فاخرة مع المقبلات والصوصات" },
+      { name: "شيش بالفخار", cat: "وجبات غربية", price: 800, sub: "قطع شيش طاووق مطهوة بالفخارة مع الجبن الذائب والخضار" },
+      { name: "سندويش كريسبي", cat: "سندويشات", price: 400, sub: "سندويش كريسبي مقرمش مع صوصات وخس وجبن" },
+      { name: "سندويش فرانسيسكو", cat: "سندويشات", price: 400, sub: "دجاج متبل مع جبنة شيدر مالت وذرة وصويا" },
+      { name: "سندويش إسكالوب", cat: "سندويشات", price: 400, sub: "شريحة دجاج بانيه مع المايونيز والخس والمخلل" },
+      { name: "سندويش زنجر", cat: "سندويشات", price: 500, sub: "دجاج حار مقرمش بتتبيلة خاصة وجبن شيدر" },
+      { name: "فول (لبن - زيت)", cat: "فطور", price: 300, sub: "فول مدمس متبل بالطحينة واللبن أو بزيت الزيتون والكمون" },
+      { name: "فتة (سمنة - زيت)", cat: "فطور", price: 300, sub: "فتة حمص بالخبز المقرمش واللبن مفرقعة بالسمن البلدي أو الزيت" },
+      { name: "جبنة بلدية أو شلل", cat: "فطور", price: 200, sub: "صحن جبنة سورية بلدية طازجة مع زيتون وزعتر" },
+      { name: "صحن لبنة بلدية", cat: "فطور", price: 200, sub: "لبنة شامية بزيت الزيتون والنعناع المجفف" },
+      { name: "مربى + زبدة", cat: "فطور", price: 200, sub: "تشكيلة مربيات منزلية مع الزبدة الطرية" },
+      { name: "صحن زيتون متبل", cat: "فطور", price: 200, sub: "زيتون أخضر وأسود متبل بالجزر والفليفلة وزيت الزيتون" },
+      { name: "صحن خضار مشكل", cat: "فطور", price: 250, sub: "بندورة، خيار، نعناع، فليفلة خضراء طازجة" },
+      { name: "بيض مقلي", cat: "فطور", price: 250, sub: "بيض مقلي بالسمنة أو الزيت حسب الرغبة" },
+      { name: "شوربة كريم فطر", cat: "شوربات", price: 250, sub: "شوربة كريمة ناعمة بقطع المشروم والأعشاب" },
+      { name: "شوربة كريم ذرة", cat: "شوربات", price: 250, sub: "شوربة كريمة بالذرة الحلوة والحليب" },
+      { name: "شوربة كريم دجاج", cat: "شوربات", price: 350, sub: "كريمة بيضاء غنية بشرائح الدجاج الطرية" },
+      { name: "شوربة عدس", cat: "شوربات", price: 250, sub: "شوربة عدس صفراء تقليدية مع الليمون والكمون" },
+      { name: "كبة حميص", cat: "مقبلات ساخنة", price: 150, sub: "حبة كبة شامية مقرمشة مقلية باللحم واللوز" },
+      { name: "برك جبنة", cat: "مقبلات ساخنة", price: 100, sub: "رقائق برك مقرمشة محشوة بالجبن الشامي وحبة البركة" },
+      { name: "بطاطا مقلية", cat: "مقبلات ساخنة", price: 250, sub: "أصابع بطاطا مقلية مقرمشة ومملحة" },
+      { name: "مفركة فطر", cat: "مقبلات ساخنة", price: 500, sub: "فطر طازج مفرك مع البصل وزيت الزيتون والبهار" },
+      { name: "حمص ناعم", cat: "مقبلات باردة", price: 220, sub: "حمص بطحينة وزيت الزيتون البكر" },
+      { name: "متبل باذنجان", cat: "مقبلات باردة", price: 220, sub: "باذنجان مشوي مهروس مع طحينة ولبن ورمان" },
+      { name: "بابا غنوج", cat: "مقبلات باردة", price: 220, sub: "باذنجان مشوي مع خضار مقطعة ودبس رمان وجوز" },
+      { name: "محمرة شامية", cat: "مقبلات باردة", price: 220, sub: "خلطة فليفلة حمراء مطحونة مع كعك وجوز وزيت زيتون" },
+      { name: "كشكة", cat: "مقبلات باردة", price: 220, sub: "كشكة تقليدية متبلة بالبصل والنعناع وزيت الزيتون" },
+      { name: "كريم ثوم", cat: "مقبلات باردة", price: 220, sub: "صلصة ثوم غنية وشهية للمشاوي والمقالي" },
+      { name: "حمص بيروتي", cat: "مقبلات باردة", price: 220, sub: "حمص ناعم متبل بالبقدونس والثوم ومزين بالفليفلة" },
+      { name: "يالنجي فاخر", cat: "مقبلات باردة", price: 300, sub: "ورق عنب محشي رز وخضار بزيت الزيتون ودبس الرمان" },
+      { name: "حمص باللحمة", cat: "مقبلات باردة", price: 450, sub: "صحن حمص مغطى بلحم مفروم بلدي مقلي مع صنوبر" },
+      { name: "سلطة شرقية", cat: "سلطات", price: 350, sub: "خضار موسمية طازجة مع زيت الزيتون والليمون" },
+      { name: "فتوش شامي", cat: "سلطات", price: 300, sub: "خضار منوعة مع خبز مقرمش ودبس رمان وسماق" },
+      { name: "تبولة", cat: "سلطات", price: 350, sub: "بقدونس مفروم ناعم مع برغل وبندورة وزيت وليمون" },
+      { name: "سلطة جرجير", cat: "سلطات", price: 250, sub: "أوراق جرجير خضراء مع شرائح بصل ورمان وجوز" },
+      { name: "سلطة سيزر", cat: "سلطات", price: 600, sub: "خس طازج مع قطع دجاج مشوي وصوص سيزر وجبن بارميزان" },
+      { name: "سلطة ذرة", cat: "سلطات", price: 250, sub: "حبات ذرة حلوة مع مايونيز وخضار ناعمة" },
+      { name: "سلطة البيت الشامي", cat: "سلطات", price: 600, sub: "سلطة خاصة بالمطعم غنية بالمكسرات والتتبيلة الخاصة" },
+      { name: "كريب شوكولا", cat: "كريب ووافل", price: 350, sub: "كريب فرنسي طري مفرود بالشوكولا اللذيذة" },
+      { name: "كريب لوتس", cat: "كريب ووافل", price: 450, sub: "كريب مغطى بكريمة اللوتس وبسكويت لوتس ناعم" },
+      { name: "كريب أوريو", cat: "كريب ووافل", price: 450, sub: "كريب محشو ومزين بقطع وبودرة بسكويت أوريو" },
+      { name: "كريب فواكه", cat: "كريب ووافل", price: 450, sub: "كريب بقطع الفواكه الطازجة وصوص الشوكولا" },
+      { name: "كريب بستاشيو", cat: "كريب ووافل", price: 450, sub: "كريب بصوص الفستق الحلبي المقرمش والفاخر" },
+      { name: "كريب فوتوتشيني", cat: "كريب ووافل", price: 450, sub: "كريب مقطع كالفوتوتشيني مع صوصين شوكولا" },
+      { name: "كريب تويست", cat: "كريب ووافل", price: 450, sub: "لفافة كريب بطبقات نكهات متعددة مدمجة" },
+      { name: "بان كيك شوكولا", cat: "كريب ووافل", price: 350, sub: "طبقات بان كيك هشة مغطاة بالشوكولا السائلة" },
+      { name: "بان كيك فواكه", cat: "كريب ووافل", price: 450, sub: "بان كيك مع تشكيلة فراولة وموز وفواكه" },
+      { name: "بان كيك بستاشيو", cat: "كريب ووافل", price: 450, sub: "بان كيك مسكوب عليه صوص الفستق الحلبي" },
+      { name: "بان كيك لوتس", cat: "كريب ووافل", price: 450, sub: "بان كيك بصوص وبسكويت لوتس" },
+      { name: "بان كيك هني (عسل)", cat: "كريب ووافل", price: 450, sub: "بان كيك يقدم مع العسل والزبدة" },
+      { name: "وافل شوكولا", cat: "كريب ووافل", price: 350, sub: "وافل بلجيكي مقرمش مسكوب عليه شوكولا غنية" },
+      { name: "وافل فواكه", cat: "كريب ووافل", price: 450, sub: "وافل مع تشكيلة فواكه طازجة وشوكولا" },
+      { name: "وافل بستاشيو", cat: "كريب ووافل", price: 450, sub: "وافل مقرمش مغطى بزبدة الفستق الحلبي" },
+      { name: "وافل لوتس", cat: "كريب ووافل", price: 450, sub: "وافل مدهون بصلصة اللوتس البلجيكية" },
+      { name: "بوظة مشكلة", cat: "بوظة وسلطات فواكه", price: 330, sub: "كرات بوظة شامية بنكهات الحليب والفواكه والمستكة" },
+      { name: "بوظة كرانشي", cat: "بوظة وسلطات فواكه", price: 400, sub: "بوظة مع قطع شوكولا وبسكويت مقرمش" },
+      { name: "بوظة جالكسي", cat: "بوظة وسلطات فواكه", price: 400, sub: "بوظة فاخرة بصوص شوكولا جالكسي الناعمة" },
+      { name: "بوظة نوتيلا", cat: "بوظة وسلطات فواكه", price: 400, sub: "بوظة غنية بنكهة النوتيلا والبندق" },
+      { name: "شوكولامو", cat: "بوظة وسلطات فواكه", price: 300, sub: "كأس بوظة شوكولا وحليب مع الكريمة المخفوقة والمكسرات" },
+      { name: "سلطة فواكه كرانشي", cat: "بوظة وسلطات فواكه", price: 600, sub: "قطع فواكه مع شوكولا مقرمشة وكريمة" },
+      { name: "سلطة فواكه نوتيلا", cat: "بوظة وسلطات فواكه", price: 600, sub: "فواكه مشكلة مغطاة بصوص النوتيلا" },
+      { name: "سلطة فواكه جالكسي", cat: "بوظة وسلطات فواكه", price: 600, sub: "فواكه طازجة مع صوص الجالكسي الفاخر" },
+      { name: "سلطة فواكه كيت كات", cat: "بوظة وسلطات فواكه", price: 600, sub: "فواكه مقطعة مع أصابع كيت كات المكسرة" },
+      { name: "سلطة فواكه إمبراطور", cat: "بوظة وسلطات فواكه", price: 600, sub: "سلطة فواكه ملكية مع قشطة ومكسرات وعسل" },
+      { name: "عصير برتقال طبيعي", cat: "عصائر وكوكتيل", price: 300, sub: "عصير برتقال معصور طازج بدون إضافات" },
+      { name: "عصير ليمون طبيعي", cat: "عصائر وكوكتيل", price: 300, sub: "عصير ليمون منعش" },
+      { name: "عصير منغا طبيعي", cat: "عصائر وكوكتيل", price: 350, sub: "عصير مانجو استوائي كثيف وطبيعي" },
+      { name: "عصير كيوي طبيعي", cat: "عصائر وكوكتيل", price: 350, sub: "عصير كيوي أخضر منعش وغني بفيتامين C" },
+      { name: "عصير ريد مون", cat: "عصائر وكوكتيل", price: 350, sub: "مزيج عصير منعش بلون ونكهة حمراء مميزة" },
+      { name: "عصير كيوي وأناناس", cat: "عصائر وكوكتيل", price: 300, sub: "كوكتيل صحي من الكيوي والأناناس الطبيعي" },
+      { name: "عصير فريز طبيعي", cat: "عصائر وكوكتيل", price: 350, sub: "عصير فراولة طازجة ولذيذة" },
+      { name: "عصير توت طبيعي", cat: "عصائر وكوكتيل", price: 300, sub: "عصير توت شامي مركز ومنعش" },
+      { name: "عصير بولو (ليمون ونعناع)", cat: "عصائر وكوكتيل", price: 300, sub: "عصير ليمون ونعناع مثلج ومنعش للأعصاب" },
+      { name: "عصير ميكس بيري", cat: "عصائر وكوكتيل", price: 350, sub: "مزيج فاخر من التوت البري المنوع" },
+      { name: "كوكتيل موز وحليب", cat: "عصائر وكوكتيل", price: 250, sub: "موز مخفوق بالحليب الطازج" },
+      { name: "كوكتيل موز وحليب وشوكولا", cat: "عصائر وكوكتيل", price: 300, sub: "موز وحليب مضاف إليه شوكولا ناعمة" },
+      { name: "كوكتيل موز وحليب وفريز", cat: "عصائر وكوكتيل", price: 300, sub: "مزيج الموز والفراولة بالحليب" },
+      { name: "كوكتيل أفوكادو فاخر", cat: "عصائر وكوكتيل", price: 400, sub: "أفوكادو طبيعي مع عسل ومكسرات" },
+      { name: "كوكتيل روك باور", cat: "عصائر وكوكتيل", price: 400, sub: "مزيج طاقة طبيعي غني بالمكسرات والفواكه" },
+      { name: "كوكتيل موز وحليب وقرفة", cat: "عصائر وكوكتيل", price: 300, sub: "موز بالحليب مع رشة قرفة عطرية" },
+      { name: "كوكتيل موز وحليب وعسل", cat: "عصائر وكوكتيل", price: 300, sub: "موز وحليب محلى بالعسل الطبيعي" },
+      { name: "كوكتيل فواكه مشكل", cat: "عصائر وكوكتيل", price: 300, sub: "طبقات من عصائر الفواكه الموسمية" },
+      { name: "كوكتيل موز وحليب ومنغا", cat: "عصائر وكوكتيل", price: 300, sub: "مزيج استوائي من الموز والمانجو والحليب" },
+      { name: "ميلك شيك البيت الشامي", cat: "ميلك شيك وسموزي", price: 400, sub: "الميلك شيك الخاص بالكافيه بنكهة سرية غنية" },
+      { name: "ميلك شيك بينا كولادا", cat: "ميلك شيك وسموزي", price: 350, sub: "نكهة جوز الهند والأناناس المنعشة بالحليب" },
+      { name: "ميلك شيك شوكولا", cat: "ميلك شيك وسموزي", price: 350, sub: "ميلك شيك شوكولا غنية مع كريمة" },
+      { name: "ميلك شيك فانيل", cat: "ميلك شيك وسموزي", price: 350, sub: "حليب مثلج بنكهة الفانيلا الفرنسية" },
+      { name: "ميلك شيك فريز", cat: "ميلك شيك وسموزي", price: 350, sub: "ميلك شيك فراولة طبيعية مثلجة" },
+      { name: "ميلك شيك بلوبيري", cat: "ميلك شيك وسموزي", price: 350, sub: "ميلك شيك التوت الأزرق" },
+      { name: "ميلك شيك أوريو", cat: "ميلك شيك وسموزي", price: 400, sub: "مخفوق بسكويت أوريو مع الحليب والآيس كريم" },
+      { name: "ميلك شيك تويكس", cat: "ميلك شيك وسموزي", price: 400, sub: "ميلك شيك غني بقطع شوكولا التويكس والكراميل" },
+      { name: "ميلك شيك كيت كات", cat: "ميلك شيك وسموزي", price: 400, sub: "مخفوق أصابع الكيت كات المقرمشة" },
+      { name: "ميلك شيك كرانشي", cat: "ميلك شيك وسموزي", price: 400, sub: "ميلك شيك بقطع الشوكولا المقرمشة" },
+      { name: "ميلك شيك سنكرز", cat: "ميلك شيك وسموزي", price: 400, sub: "ميلك شيك فول سوداني وشوكولا وكراميل سنكرز" },
+      { name: "ميلك شيك لوتس", cat: "ميلك شيك وسموزي", price: 400, sub: "ميلك شيك زبدة وبسكويت اللوتس" },
+      { name: "ميلك شيك تشيز كيك", cat: "ميلك شيك وسموزي", price: 400, sub: "طعم التشيز كيك الكريمي اللذيذ في مخفوق بارد" },
+      { name: "فروتي شيك", cat: "ميلك شيك وسموزي", price: 350, sub: "مخفوق فواكه طبيعية بالحليب والثلج" },
+      { name: "سموزي فريز", cat: "ميلك شيك وسموزي", price: 300, sub: "سموزي فراولة طبيعي مجروش بالثلج" },
+      { name: "سموزي أناناس", cat: "ميلك شيك وسموزي", price: 300, sub: "سموزي أناناس مثلج منعش" },
+      { name: "سموزي بولو", cat: "ميلك شيك وسموزي", price: 300, sub: "سموزي ليمون ونعناع مثلج" },
+      { name: "سموزي ميكس بيري", cat: "ميلك شيك وسموزي", price: 350, sub: "سموزي التوت البري المشكل" },
+      { name: "سموزي بلو هاواي", cat: "ميلك شيك وسموزي", price: 350, sub: "سموزي أزرق استوائي منعش" },
+      { name: "سموزي بلي بنيتو", cat: "ميلك شيك وسموزي", price: 350, sub: "نكهة مميزة مجروشة بالثلج" },
+      { name: "آيس تي دراق", cat: "آيس كوفي ومثلجات", price: 300, sub: "شاي مثلج بنكهة الخوخ اللذيذة" },
+      { name: "آيس تي ليمون", cat: "آيس كوفي ومثلجات", price: 300, sub: "شاي مثلج بالليمون المنعش" },
+      { name: "آيس تي باشن فروت", cat: "آيس كوفي ومثلجات", price: 300, sub: "شاي مثلج بنكهة فاكهة الباشن الاستوائية" },
+      { name: "آيس تي ستروبيري", cat: "آيس كوفي ومثلجات", price: 300, sub: "شاي مثلج بنكهة الفراولة" },
+      { name: "آيس تي ميكس بيري", cat: "آيس كوفي ومثلجات", price: 300, sub: "شاي مثلج بالتوت البري المنوع" },
+      { name: "فرابتشينو", cat: "آيس كوفي ومثلجات", price: 350, sub: "قهوة مثلجة ممزوجة بالكريمة ورغوة الحليب" },
+      { name: "فراب موكا", cat: "آيس كوفي ومثلجات", price: 350, sub: "موكا مثلجة بالشوكولا والكريمة" },
+      { name: "فراب كوكوتت", cat: "آيس كوفي ومثلجات", price: 350, sub: "قهوة فراب بنكهة جوز الهند اللذيذة" },
+      { name: "آيس كوفي كلاسيك", cat: "آيس كوفي ومثلجات", price: 300, sub: "قهوة مثلجة منعشة مع حليب خفيف" },
+      { name: "آيس سبانش لاتيه", cat: "آيس كوفي ومثلجات", price: 350, sub: "إسبرسو مثلج بحليب مكثف محلى" },
+      { name: "آيس كوفي بندق", cat: "آيس كوفي ومثلجات", price: 350, sub: "قهوة مثلجة بنكهة البندق المحمص" },
+      { name: "آيس كوفي موكا", cat: "آيس كوفي ومثلجات", price: 350, sub: "قهوة مثلجة ممزوجة بالشوكولا" },
+      { name: "بلوسبانش لاتيه", cat: "آيس كوفي ومثلجات", price: 350, sub: "سبانش لاتيه بارد بطبقات ملونة" },
+      { name: "آيس كوفي فانيل", cat: "آيس كوفي ومثلجات", price: 350, sub: "قهوة مثلجة بنكهة الفانيلا" },
+      { name: "آيس أمريكانو", cat: "آيس كوفي ومثلجات", price: 350, sub: "شوت إسبرسو مزدوج مع ماء مثلج ومنعش" },
+      { name: "إنيرجي ستروبيري", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة بنكهة الفراولة" },
+      { name: "إنيرجي بلوكر مساو", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة بلو كوراكاو منعش" },
+      { name: "إنيرجي غرين", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة بنكهة التفاح الأخضر" },
+      { name: "إنيرجي ميكس بيري", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة بنكهة التوت المشكل" },
+      { name: "إنيرجي فريز", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة بنكهة الفراولة الطبيعية" },
+      { name: "إنيرجي باشن فروت", cat: "طاقة وصودا", price: 250, sub: "مشروب طاقة استوائي منعش" },
+      { name: "جاك إنيرجي", cat: "طاقة وصودا", price: 200, sub: "مشروب طاقة جاك المركز" },
+      { name: "ريدبول (Red Bull)", cat: "طاقة وصودا", price: 300, sub: "علبة ريدبول أصلية مثلجة" },
+      { name: "بايسون إنيرجي", cat: "طاقة وصودا", price: 200, sub: "مشروب طاقة بايسون الأصلي" },
+      { name: "دارك بلو إنيرجي", cat: "طاقة وصودا", price: 200, sub: "مشروب طاقة دارك بلو" },
+      { name: "صودا موهيتو", cat: "طاقة وصودا", price: 300, sub: "صودا منعشة بالنعناع والليمون" },
+      { name: "صودا بلو", cat: "طاقة وصودا", price: 300, sub: "صودا كوراكاو زرقاء مثلجة" },
+      { name: "صودا ستروبيري", cat: "طاقة وصودا", price: 300, sub: "صودا بنكهة الفراولة المركزة" },
+      { name: "صودا غرين", cat: "طاقة وصودا", price: 300, sub: "صودا بنكهة التفاح الأخضر" },
+      { name: "صودا ميكس بيري", cat: "طاقة وصودا", price: 300, sub: "صودا بنكهة التوت المشكل" },
+      { name: "صودا بطيخ", cat: "طاقة وصودا", price: 300, sub: "صودا بنكهة البطيخ الأحمر الصيفية" },
+      { name: "صودا فريز", cat: "طاقة وصودا", price: 300, sub: "صودا منعشة بنكهة الفريز" },
+      { name: "صودا ريد", cat: "طاقة وصودا", price: 300, sub: "صودا توت أحمر منعشة" },
+      { name: "صودا بلو بيري", cat: "طاقة وصودا", price: 300, sub: "صودا التوت الأزرق" },
+      { name: "مياه غازية بأنواعها", cat: "طاقة وصودا", price: 150, sub: "مياه معدنية غازية فوارة مثلجة" },
+      { name: "قهوة تركي شامي", cat: "مشروبات ساخنة", price: 150, sub: "قهوة ببن محمص مع الهال على الأصول" },
+      { name: "شاي بأنواعه", cat: "مشروبات ساخنة", price: 150,sub: "شاي أسود شامي، شاي أخضر أو إنجليزي" },
+      { name: "زهورات شامية", cat: "مشروبات ساخنة", price: 150, sub: "خلطة أعشاب وزهورات دمشقية عطرية دافئة" },
+      { name: "مليسة مهدئة", cat: "مشروبات ساخنة", price: 150, sub: "مشروب مليسة مهدئ للأعصاب" },
+      { name: "بابونج ساخن", cat: "مشروبات ساخنة", price: 150, sub: "مغلي زهور البابونج الطبيعية" },
+      { name: "برتقال مغلي", cat: "مشروبات ساخنة", price: 150, sub: "عصير برتقال طبيعي دافئ ومحلى بالعسل" },
+      { name: "ليمونية دافئة", cat: "مشروبات ساخنة", price: 150, sub: "مغلي الليمون والنعناع الساخن" },
+      { name: "كركديه ساخن", cat: "مشروبات ساخنة", price: 150, sub: "مشروب كركديه أحمر دافئ" },
+      { name: "كمون وليمون", cat: "مشروبات ساخنة", price: 150, sub: "مغلي كمون مع شريحة ليمون طازجة" },
+      { name: "نسكافيه 2*1", cat: "مشروبات ساخنة", price: 200, sub: "نسكافيه مع مبيض بدون سكر" },
+      { name: "نسكافيه 3*1", cat: "مشروبات ساخنة", price: 200, sub: "نسكافيه كلاسيكي مع مبيض وسكر" },
+      { name: "نسكافيه بلاك", cat: "مشروبات ساخنة", price: 150, sub: "قهوة نسكافيه سوداء نقية" },
+      { name: "نسكافيه مع كوفي مت", cat: "مشروبات ساخنة", price: 250, sub: "نسكافيه كريمي محضر بالكوفي ميت" },
+      { name: "هوت شوكليت البيت الشامي", cat: "مشروبات ساخنة", price: 250, sub: "شوكولا ساخنة خاصة بالمحل كثيفة وغنية" },
+      { name: "هوت شوكليت (كوكونت/بندق/أوريو)", cat: "مشروبات ساخنة", price: 250, sub: "شوكولا ساخنة بالنكهة التي تختارها" },
+      { name: "كابتشينو (بندق/فانيل/موكا/كوكونت)", cat: "مشروبات ساخنة", price: 250, sub: "كابتشينو برغوة مخملية ونكهة حسب اختيارك" },
+      { name: "إسبرسو سنغل", cat: "إسبرسو ولاتيه", price: 260, sub: "شوت إسبرسو واحد غني بالكريما الذهبية" },
+      { name: "إسبرسو دوبيو", cat: "إسبرسو ولاتيه", price: 300, sub: "جرعة مضاعفة من القهوة الإيطالية المركزة" },
+      { name: "أمريكانو ساخن", cat: "إسبرسو ولاتيه", price: 300, sub: "إسبرسو مخفف بالماء الساخن" },
+      { name: "إسبرسو نستلة", cat: "إسبرسو ولاتيه", price: 300, sub: "إسبرسو مع لمسة حليب مكثف نستلة" },
+      { name: "إسبرسو ميكياتو", cat: "إسبرسو ولاتيه", price: 300, sub: "شوت إسبرسو مدموغ بملعقة رغوة حليب" },
+      { name: "لاتيه كلاسيك", cat: "إسبرسو ولاتيه", price: 300, sub: "إسبرسو مع حليب ساخن مبخر ورغوة خفيفة" },
+      { name: "لاتيه فانيل", cat: "إسبرسو ولاتيه", price: 350, sub: "لاتيه ساخن بنكهة الفانيلا الناعمة" },
+      { name: "لاتيه بندق", cat: "إسبرسو ولاتيه", price: 350, sub: "لاتيه بنكهة البندق اللذيذة" },
+      { name: "لاتيه موكا", cat: "إسبرسو ولاتيه", price: 350, sub: "مزيج الإسبرسو مع الشوكولا والحليب المبخر" },
+      { name: "لاتيه كوكونت", cat: "إسبرسو ولاتيه", price: 350, sub: "لاتيه بنكهة جوز الهند الاستوائية" },
+      { name: "سبانش لاتيه ساخن", cat: "إسبرسو ولاتيه", price: 350, sub: "إسبرسو بحليب مكثف ساخن ورغوة ناعمة" },
+      { name: "أركيلة معسل تفاحتين (نخلة / فاخر / ميكس)", cat: "أراكيل", price: 300, sub: "أركيلة معسل تفاحتين بنكهة أصيلة وفحم طبيعي" },
+      { name: "أركيلة مزايا (بولو / عنب / عنب ونعنع)", cat: "أراكيل", price: 300, sub: "أركيلة معسل مزايا نكهات منعشة" },
+      { name: "أركيلة مزايا (مسكة / لوف / بلو بيري نعنع)", cat: "أراكيل", price: 300, sub: "أركيلة معسل مزايا نكهات خاصة وفحم ممتاز" },
+      { name: "أركيلة تنباك (عجمي / أصفهاني)", cat: "أراكيل", price: 300, sub: "أركيلة تنباك تقليدية على أصولها" }
     ];
 
-    let cart = [];
+    let cartList = [];
+    let deliveryType = "توصيل سريع إلى العنوان";
+    let activeCategory = "all";
 
-    function renderFoodItems(items) {
-      const container = document.getElementById('food-list-container');
-      const countEl = document.getElementById('items-count');
-      if (!container) return;
-      container.innerHTML = '';
-      if (countEl) countEl.textContent = `${items.length} صنف متوفر`;
+    function renderMenuFeed(items) {
+      const feed = document.getElementById('menu-items-feed');
+      if (!feed) return;
+      feed.innerHTML = '';
 
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'food-card';
-        card.innerHTML = `
-          <div class="food-info">
-            <h5 class="food-name">${item.name}</h5>
-            <p class="food-desc">${item.desc}</p>
-            <span class="food-price">${item.price} ل.س</span>
-          </div>
-          <div class="food-actions">
-            <img src="${item.img}" class="food-img" alt="${item.name}">
-            <button class="add-btn" onclick="addToCart(${item.id})">+</button>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function filterCategory(cat, el) {
-      if (el) {
-        document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-      }
-      if (cat === 'all') {
-        renderFoodItems(menuItems);
-      } else {
-        renderFoodItems(menuItems.filter(i => i.category === cat));
-      }
-    }
-
-    function addToCart(id) {
-      const item = menuItems.find(i => i.id === id);
-      if (item) {
-        cart.push(item);
-        document.getElementById('cart-counter').textContent = cart.length;
-      }
-    }
-
-    function openWhatsApp(customMsg) {
-      const text = customMsg || "مرحباً كافيه ومطعم البيت الشامي، أود الاستفسار والطلب من المنيو.";
-      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    function checkoutCart() {
-      if (cart.length === 0) {
-        alert("السلة فارغة! اضغط على علامة (+) لإضافة وجبات أولاً.");
+      if (items.length === 0) {
+        feed.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted); font-size:13px;">لم يتم العثور على نتائج مطابقة لطلبك.</div>`;
         return;
       }
-      let summary = "مرحباً كافيه ومطعم البيت الشامي، أود طلب الأصناف التالية من المنيو:\n\n";
-      let total = 0;
-      cart.forEach((c, idx) => {
-        summary += `${idx + 1}. ${c.name} - ${c.price} ل.س\n`;
-        total += c.price;
+
+      items.forEach(dish => {
+        const card = document.createElement('article');
+        card.className = 'dish-card reveal-card';
+        card.innerHTML = `
+          <div class="dish-details">
+            <span class="dish-tag">${dish.cat}</span>
+            <div class="dish-title">${dish.name}</div>
+            <div class="dish-sub">${dish.sub}</div>
+            <div class="dish-price">${dish.price} ل.س</div>
+          </div>
+          <button class="add-action-btn" title="إضافة للطلب" onclick="addToOrder('${dish.name.replace(/'/g, "\\'")}', ${dish.price}, '${dish.cat}')">+</button>
+        `;
+        feed.appendChild(card);
       });
-      summary += `\nالمجموع الإجمالي: ${total} ل.س\nيرجى تأكيد الاستلام والتوصيل.`;
-      openWhatsApp(summary);
+
+      observeScrollElements();
+    }
+
+    function switchCategory(catName, btnEl) {
+      activeCategory = catName;
+      document.querySelectorAll('.cat-chip').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const searchVal = document.getElementById('menu-search-input').value.trim();
+      applyFilters(searchVal, activeCategory);
+    }
+
+    function handleSearch() {
+      const q = document.getElementById('menu-search-input').value.trim().toLowerCase();
+      applyFilters(q, activeCategory);
+    }
+
+    function applyFilters(query, category) {
+      let result = completeMenuDB;
+      if (category !== 'all') {
+        result = result.filter(item => item.cat === category);
+      }
+      if (query) {
+        result = result.filter(item => item.name.toLowerCase().includes(query) || item.sub.toLowerCase().includes(query));
+      }
+      renderMenuFeed(result);
+    }
+
+    function observeScrollElements() {
+      const cards = document.querySelectorAll('.reveal-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => observer.observe(card));
+    }
+
+    function addToOrder(name, price, cat) {
+      const existing = cartList.find(i => i.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cartList.push({ name, price, cat, qty: 1 });
+      }
+      updateCartDisplay();
+    }
+
+    function alterCartQty(name, delta) {
+      const item = cartList.find(i => i.name === name);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cartList = cartList.filter(i => i.name !== name);
+      }
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const totalCount = cartList.reduce((acc, cur) => acc + cur.qty, 0);
+      document.getElementById('dock-cart-counter').textContent = totalCount;
+
+      const cartContainer = document.getElementById('cart-rows-feed');
+      if (!cartContainer) return;
+
+      cartContainer.innerHTML = '';
+      let subtotal = 0;
+
+      if (cartList.length === 0) {
+        cartContainer.innerHTML = `<div style="text-align:center; padding:30px 10px; color:var(--text-muted); font-size:12px;">سلة طلبك فارغة حالياً.<br>تصفح المنيو واضغط على (+) لإضافة وجباتك.</div>`;
+      } else {
+        cartList.forEach(item => {
+          const itemTotal = item.price * item.qty;
+          subtotal += itemTotal;
+          const row = document.createElement('div');
+          row.className = 'cart-row';
+          row.innerHTML = `
+            <div>
+              <div class="cart-row-title">${item.name}</div>
+              <div class="cart-row-meta">${item.price} ل.س × ${item.qty} = ${itemTotal} ل.س</div>
+            </div>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="alterCartQty('${item.name.replace(/'/g, "\\'")}', -1)">-</button>
+              <span style="font-size:13px; font-weight:800; min-width:18px; text-align:center;">${item.qty}</span>
+              <button class="qty-btn" onclick="alterCartQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
+            </div>
+          `;
+          cartContainer.appendChild(row);
+        });
+      }
+
+      document.getElementById('bill-subtotal').textContent = `${subtotal} ل.س`;
+      document.getElementById('bill-grand-total').textContent = `${subtotal} ل.س`;
+    }
+
+    function setDeliveryType(type) {
+      deliveryType = type;
+      if (type.includes('توصيل')) {
+        document.getElementById('opt-delivery').classList.add('active');
+        document.getElementById('opt-takeaway').classList.remove('active');
+        document.getElementById('bill-mode-txt').textContent = "توصيل";
+      } else {
+        document.getElementById('opt-takeaway').classList.add('active');
+        document.getElementById('opt-delivery').classList.remove('active');
+        document.getElementById('bill-mode-txt').textContent = "استلام من الفرع";
+      }
+    }
+
+    function navigate(tabId, btnEl) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetTab = document.getElementById(tabId);
+      if (targetTab) targetTab.classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function sendOrderViaWhatsApp() {
+      if (cartList.length === 0) {
+        alert("السلة فارغة! يرجى إضافة وجبات أولاً قبل إرسال الطلب.");
+        return;
+      }
+
+      const address = document.getElementById('customer-address').value.trim() || "لم يحدد بعد";
+      const notes = document.getElementById('order-special-notes').value.trim() || "لا يوجد";
+      let grandTotal = 0;
+
+      let msg = `*طلب جديد من منيو البيت الشامي*\n`;
+      msg += `--------------------------\n`;
+      msg += `📍 *طريقة الاستلام:* ${deliveryType}\n`;
+      msg += `👤 *الاسم / العنوان:* ${address}\n`;
+      msg += `📝 *ملاحظات خاصة:* ${notes}\n`;
+      msg += `--------------------------\n`;
+      msg += `*قائمة الوجبات والطلبات:*\n`;
+
+      cartList.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        grandTotal += itemTotal;
+        msg += `${index + 1}. ${item.name} (عدد ${item.qty}) - ${itemTotal} ل.س\n`;
+      });
+
+      msg += `--------------------------\n`;
+      msg += `💰 *المجموع النهائي المطلوب:* *${grandTotal} ل.س*\n\n`;
+      msg += `يرجى تأكيد استلام الطلب وتجهيزه. شكراً لكم!`;
+
+      const targetUrl = `https://wa.me/${PRIMARY_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+      window.open(targetUrl, '_blank');
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      renderFoodItems(menuItems);
+      renderMenuFeed(completeMenuDB);
+      updateCartDisplay();
     });
   </script>
 </body>
